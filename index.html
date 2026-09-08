@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إليت سيرفس - المنصة الذهبية للخدمات والإعلانات</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:'Cairo',sans-serif;
+}
+
+:root{
+    --gold-primary:#d4af37;
+    --gold-light:#f3e5ab;
+    --cyan-glow:#00f2fe;
+    --bg:#07090e;
+    --card-bg:rgba(18, 24, 38, 0.75);
+    --surface:#121826;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --border:rgba(212, 175, 55, 0.18);
+    --shadow:0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    --gradient:linear-gradient(135deg, #d4af37 0%, #aa771c 50%, #f3e5ab 100%);
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+    background-image: 
+        radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 90% 90%, rgba(0, 242, 254, 0.05) 0%, transparent 45%);
+}
+
+button,input,select,textarea{ font:inherit; color:inherit; }
+button{ cursor:pointer; border:none; background:transparent; }
+
+/* HEADER */
+header{
+    height:90px;
+    padding:0 7%;
+    background:rgba(7, 9, 14, 0.9);
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(25px);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:28px;
+    font-weight:900;
+    background:var(--gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.logo-icon{
+    width:50px;
+    height:50px;
+    display:grid;
+    place-items:center;
+    color:#07090e;
+    border-radius:16px;
+    background:var(--gradient);
+    font-size:24px;
+}
+
+nav{
+    display:flex;
+    gap:6px;
+    background:rgba(255,255,255,0.02);
+    padding:6px;
+    border-radius:18px;
+    border:1px solid var(--border);
+}
+
+nav button{
+    padding:8px 18px;
+    color:var(--muted);
+    border-radius:12px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+nav button:hover, nav button.active{
+    background:rgba(212,175,55,0.1);
+    color:var(--gold-light);
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.login-btn{
+    background:rgba(212,175,55,0.1);
+    color:var(--gold-light);
+    padding:10px 22px;
+    border-radius:14px;
+    font-weight:700;
+    border:1px solid rgba(212,175,55,0.3);
+    transition:0.3s;
+}
+
+.login-btn:hover{
+    background:var(--gradient);
+    color:#07090e;
+}
+
+.profile-btn{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    color:#07090e;
+    background:var(--gradient);
+    font-weight:900;
+    display:grid;
+    place-items:center;
+}
+
+/* ADS BANNER STYLES */
+.ad-container{
+    width:100%;
+    max-width:1200px;
+    margin:25px auto;
+    padding:15px;
+    background:rgba(255,255,255,0.015);
+    border:2px dashed rgba(212,175,55,0.25);
+    border-radius:20px;
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+}
+
+.sponsored-banner{
+    background:linear-gradient(135deg, rgba(212,175,55,0.12), rgba(18,24,38,0.9));
+    border:1px solid rgba(212,175,55,0.5);
+    border-radius:26px;
+    padding:24px;
+    margin-bottom:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.sponsored-badge{
+    position:absolute;
+    top:0; right:0;
+    background:var(--gradient);
+    color:#07090e;
+    font-size:11px;
+    font-weight:900;
+    padding:4px 15px;
+    border-bottom-left-radius:14px;
+}
+
+/* HERO SECTION */
+.hero{
+    padding:60px 7% 40px 7%;
+}
+
+.hero-content{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:50px;
+    align-items:center;
+}
+
+.hero h1{
+    font-size:clamp(36px, 4.5vw, 56px);
+    line-height:1.2;
+    margin-bottom:20px;
+    font-weight:900;
+}
+
+.hero h1 span{
+    background:var(--gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.search-box{
+    display:flex;
+    gap:10px;
+    padding:8px;
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:22px;
+    backdrop-filter:blur(20px);
+    box-shadow:var(--shadow);
+    max-width:600px;
+}
+
+.search-box input{
+    flex:1; border:none; outline:none; padding:14px 20px; background:transparent; font-size:16px;
+}
+
+.search-box button{
+    background:var(--gradient); color:#07090e; padding:14px 30px; border-radius:16px; font-weight:900;
+}
+
+.hero-card{
+    padding:35px; border-radius:32px;
+    background:linear-gradient(135deg, rgba(18,24,38,0.95), rgba(7,9,14,0.95));
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+}
+
+.hero-card h2{ font-size:24px; margin-bottom:12px; color:var(--gold-light); }
+.hero-card p{ font-size:14px; margin-bottom:20px; }
+
+.location-box{
+    padding:20px; border-radius:20px; background:rgba(255,255,255,0.02); border:1px solid var(--border);
+}
+.location-box strong{ display:block; margin-bottom:5px; color:var(--gold-light); }
+.location-box span{ color:var(--muted); font-size:14px; }
+
+/* GENERAL SECTIONS */
+.container{ width:86%; max-width:1200px; margin:auto; }
+section{ padding:50px 0; }
+.section-title{ margin-bottom:30px; }
+.section-title h2{ font-size:32px; font-weight:900; margin-bottom:8px; }
+.section-title p{ color:var(--muted); }
+
+/* CATEGORIES */
+.categories{
+    display:grid; grid-template-columns:repeat(6, 1fr); gap:18px;
+}
+.category{
+    background:var(--card-bg); border:1px solid var(--border); border-radius:24px;
+    padding:28px 15px; text-align:center; transition:0.4s;
+}
+.category:hover{
+    transform:translateY(-8px); border-color:var(--gold-primary); background:var(--surface);
+}
+.category-icon{
+    width:68px; height:68px; margin:0 auto 15px; border-radius:20px;
+    background:rgba(212,175,55,0.08); display:grid; place-items:center; font-size:32px;
+    border:1px solid rgba(212,175,55,0.2);
+}
+.category h3{ font-size:16px; font-weight:700; }
+
+/* SERVICES GRID */
+.services-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:26px; }
+.service-card{
+    background:var(--card-bg); border:1px solid var(--border); border-radius:26px;
+    padding:28px; transition:0.4s; position:relative;
+}
+.service-card.vip{ border-color:var(--gold-primary); background:linear-gradient(135deg, rgba(212,175,55,0.06), rgba(18,24,38,0.9)); }
+.service-card:hover{ transform:translateY(-6px); border-color:rgba(212,175,55,0.5); }
+.service-top{ display:flex; justify-content:space-between; align-items:start; margin-bottom:20px; }
+.service-avatar{
+    width:70px; height:70px; border-radius:22px; background:var(--gradient);
+    display:grid; place-items:center; font-size:32px;
+}
+.verified{
+    padding:6px 14px; border-radius:20px; background:rgba(212, 175, 55, 0.12);
+    color:var(--gold-light); font-size:12px; font-weight:bold; border:1px solid rgba(212, 175, 55, 0.3);
+}
+.service-card h3{ font-size:22px; margin-bottom:6px; }
+.service-type{ color:var(--muted); font-size:14px; margin-bottom:12px; }
+.rating{ color:#f59e0b; margin-bottom:18px; font-weight:bold; }
+.rating span{ color:var(--muted); font-size:13px; font-weight:normal; }
+
+.service-info{
+    display:flex; flex-direction:column; gap:10px; padding:16px 0;
+    margin-bottom:18px; border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    color:var(--muted); font-size:14px;
+}
+.service-footer{ display:flex; justify-content:space-between; align-items:center; }
+.price{ font-weight:900; font-size:20px; color:var(--gold-light); }
+.price small{ display:block; color:var(--muted); font-size:11px; font-weight:normal; }
+.request-btn{
+    background:var(--gradient); color:#07090e; border-radius:16px; padding:12px 24px; font-weight:900;
+}
+
+/* WORKER DASHBOARD */
+.worker-dashboard{ display:none; }
+.worker-dashboard.active{ display:block; }
+
+.worker-summary{ display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; margin-bottom:30px; }
+.summary-card{ background:var(--card-bg); border:1px solid var(--border); border-radius:24px; padding:25px; }
+.summary-card .number{
+    font-size:36px; font-weight:900; background:var(--gradient);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px;
+}
+.summary-card p{ color:var(--muted); font-size:14px; }
+
+.orders-list{ display:grid; gap:18px; }
+.order{
+    background:var(--card-bg); border:1px solid var(--border); border-radius:26px;
+    padding:26px; display:flex; justify-content:space-between; gap:20px;
+}
+.order-main h3{ margin-bottom:12px; font-size:18px; }
+.order-info{ display:grid; gap:8px; color:var(--muted); font-size:14px; }
+
+.status{ padding:8px 16px; border-radius:20px; font-size:13px; font-weight:bold; height:fit-content; }
+.status.pending{ background:rgba(245, 158, 11, 0.15); color:#f59e0b; border:1px solid rgba(245, 158, 11, 0.3); }
+.status.accepted{ background:rgba(212, 175, 55, 0.15); color:var(--gold-light); border:1px solid rgba(212, 175, 55, 0.3); }
+.status.completed{ background:rgba(16, 185, 129, 0.15); color:#10b981; border:1px solid rgba(16, 185, 129, 0.3); }
+.status.rejected{ background:rgba(239, 68, 68, 0.15); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); }
+
+.worker-actions{ display:flex; gap:12px; margin-top:18px; }
+.accept-btn, .reject-btn, .complete-btn{ padding:10px 20px; border-radius:14px; font-weight:bold; }
+.accept-btn{ background:rgba(212, 175, 55, 0.2); color:var(--gold-light); border:1px solid rgba(212, 175, 55, 0.4); }
+.complete-btn{ background:rgba(16, 185, 129, 0.2); color:#10b981; border:1px solid rgba(16, 185, 129, 0.4); }
+.reject-btn{ background:rgba(239, 68, 68, 0.2); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.4); }
+
+.empty{ background:var(--card-bg); border:2px dashed var(--border); border-radius:26px; padding:50px; text-align:center; color:var(--muted); }
+
+/* SUBSCRIPTION PLANS MODAL */
+.plans-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:15px; margin:20px 0; }
+.plan-card{
+    border:1px solid var(--border); background:rgba(255,255,255,0.02); border-radius:20px;
+    padding:20px 15px; text-align:center; cursor:pointer; transition:0.3s;
+}
+.plan-card:hover, .plan-card.selected{ border-color:var(--gold-primary); background:rgba(212,175,55,0.08); }
+.plan-card h3{ color:var(--gold-light); font-size:18px; margin-bottom:8px; }
+.plan-card .price-tag{ font-size:22px; font-weight:900; margin-bottom:10px; }
+.plan-card p{ color:var(--muted); font-size:12px; }
+
+/* MODALS */
+.modal-overlay{
+    position:fixed; inset:0; background:rgba(7, 9, 14, 0.85); display:none;
+    align-items:center; justify-content:center; padding:20px; z-index:3000; backdrop-filter:blur(15px);
+}
+.modal-overlay.active{ display:flex; }
+.modal{
+    width:100%; max-width:620px; max-height:90vh; overflow-y:auto; padding:38px;
+    background:#121826; border:1px solid var(--border); border-radius:32px; box-shadow:0 30px 60px rgba(0,0,0,0.7);
+}
+.modal-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; }
+.close-btn{
+    width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,0.04);
+    font-size:22px; display:grid; place-items:center;
+}
+
+.form-group{ margin-bottom:20px; }
+.form-group label{ display:block; margin-bottom:8px; font-size:14px; font-weight:700; }
+.form-group input, .form-group select, .form-group textarea{
+    width:100%; padding:14px 18px; border:1px solid var(--border); border-radius:16px;
+    background:rgba(7,9,14,0.6); outline:none;
+}
+.form-group textarea{ min-height:110px; resize:vertical; }
+.required{ color:#ef4444; }
+
+.submit-btn{
+    width:100%; padding:16px; border-radius:16px; background:var(--gradient);
+    color:#07090e; font-weight:900; font-size:16px;
+}
+
+.service-options{ display:grid; grid-template-columns:repeat(2, 1fr); gap:10px; }
+.service-option{
+    border:1px solid var(--border); border-radius:14px; padding:14px; display:flex;
+    align-items:center; gap:10px; background:rgba(7,9,14,0.4); cursor:pointer;
+}
+
+.profile-box{ text-align:center; }
+.big-profile{
+    width:90px; height:90px; margin:0 auto 20px; border-radius:50%; background:var(--gradient);
+    display:grid; place-items:center; font-size:36px; font-weight:900; color:#07090e;
+}
+.profile-data{
+    margin:25px 0; text-align:right; background:rgba(7,9,14,0.4); border-radius:20px; border:1px solid var(--border); overflow:hidden;
+}
+.profile-data div{ padding:16px 20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; }
+.profile-data div:last-child{ border-bottom:none; }
+.logout-btn{
+    width:100%; padding:15px; border-radius:14px; color:white; background:rgba(239, 68, 68, 0.2);
+    border:1px solid rgba(239, 68, 68, 0.4); font-weight:bold;
+}
+
+.toast{
+    position:fixed; bottom:30px; right:30px; background:#121826; border:1px solid var(--border);
+    color:white; padding:16px 24px; border-radius:18px; box-shadow:var(--shadow);
+    transform:translateY(120px); opacity:0; transition:0.4s; z-index:5000; font-weight:600;
+}
+.toast.show{ transform:translateY(0); opacity:1; }
+
+footer{ background:#040508; border-top:1px solid var(--border); padding:50px 7%; margin-top:60px; }
+.footer-content{ max-width:1200px; margin:auto; display:flex; justify-content:space-between; align-items:center; }
+footer p{ color:var(--muted); font-size:14px; }
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <div class="logo-icon">💎</div>
+        إليت سيرفس
+    </div>
+    <nav>
+        <button onclick="scrollToSection('home')">الرئيسية</button>
+        <button onclick="scrollToSection('services')">الخبراء</button>
+        <button onclick="scrollToSection('orders')">طلباتي</button>
+    </nav>
+    <div class="header-actions">
+        <button class="login-btn" id="loginButton" onclick="openLoginModal()">تسجيل الدخول (مستفيد)</button>
+        <button class="profile-btn" id="profileButton" onclick="openLoginModal()">👤</button>
+    </div>
+</header>
+
+<main>
+<!-- مكان إعلانات جوجل أدسنس العلوي -->
+<div class="container">
+    <div class="ad-container">
+        📢 [مساحة إعلانية مخصصة لـ Google AdSense Banner هنا]
+    </div>
+</div>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div>
+            <h1>منصة الخدمات الأسرع<br><span>اتفاق مباشر ودفع كاش بدون عمولات</span></h1>
+            <p>تواصل مع أفضل الحرفيين والمهنيين في منطقتك مباشرةً وادفع للخدمة كاش بكل سهولة وأمان.</p>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ابحث عن سباك، كهربائي، فني..." oninput="searchServices()">
+                <button onclick="searchServices()">🔍 بحث</button>
+            </div>
+        </div>
+        <div class="hero-card">
+            <h2>موقعك الحالي 📍</h2>
+            <p>يتم مطابقة الخدمات حسب منطقتك.</p>
+            <div class="location-box">
+                <strong>منطقتك</strong>
+                <span id="heroLocation">جارِ التحديد...</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- قسم الانضمام كحرفي وتحقيق أرباح ضخمة -->
+<section style="padding:0 0 30px 0;">
+<div class="container">
+    <div class="sponsored-banner">
+        <div class="sponsored-badge">💼 انضم كحرفي واكسب أرباحاً هائلة</div>
+        <div>
+            <h3 style="color:var(--gold-light); font-size:20px; margin-bottom:5px;">هل أنت حرفي وتبحث عن عملاء ودخل كبير؟</h3>
+            <p style="color:var(--muted); font-size:14px;">اشترك في البرنامج (أسبوعي، شهري، أو سنوي) واظهر لآلاف العملاء واستقبل طلبات وأرباح ضخمة!</p>
+        </div>
+        <button class="request-btn" onclick="openPlansModal()">اشترك واعمل معنا 🚀</button>
+    </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+    <div class="section-title">
+        <h2>التصنيفات</h2>
+        <p>اختر القسم المطلوب</p>
+    </div>
+    <div class="categories">
+        <button class="category" onclick="filterCategory('سباكة')"><div class="category-icon">🔧</div><h3>سباكة</h3></button>
+        <button class="category" onclick="filterCategory('كهرباء')"><div class="category-icon">⚡</div><h3>كهرباء</h3></button>
+        <button class="category" onclick="filterCategory('تكييف')"><div class="category-icon">❄️</div><h3>تكييف</h3></button>
+        <button class="category" onclick="filterCategory('موبايلات')"><div class="category-icon">📱</div><h3>موبايلات</h3></button>
+        <button class="category" onclick="filterCategory('تنظيف')"><div class="category-icon">🧹</div><h3>تنظيف</h3></button>
+        <button class="category" onclick="filterCategory('سيارات')"><div class="category-icon">🚗</div><h3>سيارات</h3></button>
+    </div>
+</div>
+</section>
+
+<!-- مكان إعلانات جوجل أدسنس في المنتصف -->
+<div class="container">
+    <div class="ad-container">
+        📢 [مساحة إعلانية وسطى لـ Google AdSense]
+    </div>
+</div>
+
+<section id="services">
+<div class="container">
+    <div class="section-title">
+        <h2 id="servicesTitle">الخبراء المتاحون</h2>
+        <p>أفضل الحرفيين المعتمدين (دفع كاش مباشر للعامل)</p>
+    </div>
+    <div class="services-grid" id="servicesGrid"></div>
+</div>
+</section>
+
+<!-- WORKER DASHBOARD -->
+<section id="workerDashboard" class="worker-dashboard">
+<div class="container">
+    <div class="section-title">
+        <h2>🧰 لوحة تحكم الحرفي (الأرباح والطلبات)</h2>
+        <p>تابع اشتراكك النشط واستقبل طلبات العملاء لكسب المال الكثير</p>
+    </div>
+    <div class="worker-summary">
+        <div class="summary-card"><div class="number" id="totalOrders">0</div><p>إجمالي الطلبات</p></div>
+        <div class="summary-card"><div class="number" id="pendingOrders">0</div><p>طلبات جديدة بانتظار ردك</p></div>
+    </div>
+    <div class="orders-list" id="workerOrdersList"></div>
+</div>
+</section>
+
+<section id="orders">
+<div class="container">
+    <div class="section-title">
+        <h2>طلباتي</h2>
+        <p>متابعة حالة الخدمات التي طلبتها</p>
+    </div>
+    <div class="orders-list" id="ordersList"></div>
+</div>
+</section>
+</main>
+
+<!-- Modals -->
+
+<!-- Modal 1: اشتراك باقات الحرفيين -->
+<div class="modal-overlay" id="plansModal">
+<div class="modal">
+    <div class="modal-header"><h2>اختر باقة اشتراك الحرفي 💼</h2><button class="close-btn" onclick="closeAllModals()">×</button></div>
+    <p style="color:var(--muted); font-size:14px; margin-bottom:15px;">اشترك معنا وابدأ في استقبال عدد لا نهائي من الطلبات واكسب أموالاً كثيرة من عملك الحرفي!</p>
+    <div class="plans-grid">
+        <div class="plan-card" onclick="selectPlan('weekly', 75, 'أسبوعي')">
+            <h3>باقة أسبوعية</h3>
+            <div class="price-tag">75 ج.م</div>
+            <p>تجربة لمدة 7 أيام وتفعيل سريع</p>
+        </div>
+        <div class="plan-card selected" onclick="selectPlan('monthly', 250, 'شهري')">
+            <h3>باقة شهرية</h3>
+            <div class="price-tag">250 ج.م</div>
+            <p>الأكثر طلباً لأرباح مستمرة طوال الشهر</p>
+        </div>
+        <div class="plan-card" onclick="selectPlan('yearly', 2000, 'سنوي')">
+            <h3>باقة سنوية</h3>
+            <div class="price-tag">2000 ج.م</div>
+            <p>توفر 30% وتضمن لك العمل طوال العام</p>
+        </div>
+    </div>
+    <button class="submit-btn" onclick="proceedToWorkerRegister()">متابعة لإدخال بيانات الحرفي 🚀</button>
+</div>
+</div>
+
+<!-- Modal 2: تسجيل بيانات الحرفي -->
+<div class="modal-overlay" id="workerSetupModal">
+<div class="modal">
+    <div class="modal-header"><h2>إتمام اشتراك وتسجيل الحرفي 🧰</h2><button class="close-btn" onclick="closeAllModals()">×</button></div>
+    <form id="workerSetupForm">
+        <div class="form-group"><label>اسمك التجاري أو المهني <span class="required">*</span></label><input type="text" id="workerName" required placeholder="مثال: ورشة المهندس للصيانة"></div>
+        <div class="form-group"><label>رقم الهاتف <span class="required">*</span></label><input type="tel" id="workerPhone" maxlength="11" required placeholder="01xxxxxxxxx"></div>
+        <div class="form-group"><label>سعر الخدمة التقريبي (بالجنيه) <span class="required">*</span></label><input type="number" id="workerPrice" min="1" required placeholder="مثال: 200"></div>
+        <div class="form-group">
+            <label>اختر مجالات تخصصك <span class="required">*</span></label>
+            <div class="service-options">
+                <label class="service-option"><input type="checkbox" name="workerService" value="سباكة"> 🔧 سباكة</label>
+                <label class="service-option"><input type="checkbox" name="workerService" value="كهرباء"> ⚡ كهرباء</label>
+                <label class="service-option"><input type="checkbox" name="workerService" value="تكييف"> ❄️ تكييف</label>
+                <label class="service-option"><input type="checkbox" name="workerService" value="موبايلات"> 📱 موبايلات</label>
+                <label class="service-option"><input type="checkbox" name="workerService" value="تنظيف"> 🧹 تنظيف</label>
+                <label class="service-option"><input type="checkbox" name="workerService" value="سيارات"> 🚗 سيارات</label>
+            </div>
+        </div>
+        <div class="form-group"><label>المحافظة <span class="required">*</span></label><select id="workerGovernorate" required><option value="">اختر المحافظة</option><option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option><option>القليوبية</option><option>الشرقية</option></select></div>
+        <div class="form-group"><label>المنطقة / الحي <span class="required">*</span></label><input type="text" id="workerArea" required placeholder="مثال: سموحة"></div>
+        <div class="form-group"><label>العنوان التفصيلي <span class="required">*</span></label><input type="text" id="workerAddress" required placeholder="مثال: شارع الإبراهيمية"></div>
+        <button class="submit-btn" type="submit">الانتقال لدفع قيمة الاشتراك 💳</button>
+    </form>
+</div>
+</div>
+
+<!-- Modal دفع الاشتراك عبر Paymob الحقيقي -->
+<div class="modal-overlay" id="paymentModal">
+<div class="modal">
+    <div class="modal-header"><h2>إتمام الدفع الإلكتروني للاشتراك 💳</h2><button class="close-btn" onclick="closeAllModals()">×</button></div>
+    <p style="color:var(--gold-light); margin-bottom:20px; font-weight:bold;" id="paymentAmountText">قيمة الاشتراك المطلوبة: 250 ج.م</p>
+    <form id="paymentForm">
+        <div class="form-group">
+            <label>رقم البطاقة (Card number) <span class="required">*</span></label>
+            <input type="text" id="cardNumber" maxlength="19" required placeholder="4242 •••• •••• ••••">
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+            <div class="form-group">
+                <label>تاريخ الانتهاء (MM/YY) <span class="required">*</span></label>
+                <input type="text" id="cardExpiry" maxlength="5" required placeholder="MM/YY">
+            </div>
+            <div class="form-group">
+                <label>رمز الأمان (CVC / CVV) <span class="required">*</span></label>
+                <input type="password" id="cardCvc" maxlength="4" required placeholder="123">
+            </div>
+        </div>
+        <button class="submit-btn" type="submit" id="payConfirmBtn">دفع وتفعيل الاشتراك الآن 🚀</button>
+    </form>
+</div>
+</div>
+
+<!-- Modal 3: تسجيل بيانات المستفيد (العادي) -->
+<div class="modal-overlay" id="loginModal">
+<div class="modal">
+    <div class="modal-header"><h2>تسجيل دخول / إنشاء حساب مستفيد 🛡️</h2><button class="close-btn" onclick="closeModal('loginModal')">×</button></div>
+    <form id="loginForm">
+        <div class="form-group"><label>اسمك الكريم <span class="required">*</span></label><input type="text" id="userName" required placeholder="مثال: محمد أحمد"></div>
+        <div class="form-group"><label>رقم الهاتف <span class="required">*</span></label><input type="tel" id="loginPhone" maxlength="11" required placeholder="01xxxxxxxxx"></div>
+        <div class="form-group"><label>المحافظة <span class="required">*</span></label><select id="userGovernorate" required><option value="">اختر المحافظة</option><option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option><option>القليوبية</option><option>الشرقية</option></select></div>
+        <div class="form-group"><label>المنطقة / الحي <span class="required">*</span></label><input type="text" id="userArea" required placeholder="مثال: سموحة"></div>
+        <div class="form-group"><label>العنوان التفصيلي <span class="required">*</span></label><input type="text" id="userAddress" required placeholder="مثال: شارع مصطفى كامل"></div>
+        <button class="submit-btn" type="submit">دخول للمنصة 🚀</button>
+    </form>
+</div>
+</div>
+
+<!-- Modal 4: طلب خدمة للعملاء -->
+<div class="modal-overlay" id="requestModal">
+<div class="modal">
+    <div class="modal-header"><h2>طلب خدمة 🛡️</h2><button class="close-btn" onclick="closeModal('requestModal')">×</button></div>
+    <form id="requestForm">
+        <input type="hidden" id="selectedProvider">
+        <input type="hidden" id="selectedService">
+        <input type="hidden" id="selectedWorkerPhone">
+        <input type="hidden" id="selectedWorkerBasePrice">
+        <div class="form-group"><label>اسمك الكريم</label><input type="text" id="customerName" required></div>
+        <div class="form-group"><label>رقم الهاتف للتواصل</label><input type="tel" id="customerPhone" maxlength="11" required></div>
+        <div class="form-group"><label>عنوان تنفيذ الخدمة</label><input type="text" id="customerAddress" required></div>
+        <div class="form-group"><label>📅 الموعد المقترح</label><input type="datetime-local" id="serviceDate" required></div>
+        <div class="form-group"><label>📝 وصف المشكلة</label><textarea id="problemDescription" required></textarea></div>
+        
+        <div style="background:rgba(212,175,55,0.06);border:1px solid var(--border);padding:15px;border-radius:14px;margin-bottom:20px;font-size:14px;color:var(--muted);">
+            ℹ️ **الدفع كاش مباشر:** تدفع للحرفي مباشرة بعد إتمام الخدمة وبدون أي عمولات إضافية للمنصة.
+        </div>
+        
+        <button class="submit-btn" type="submit">تأكيد إرسال الطلب للحرفي 🚀</button>
+    </form>
+</div>
+</div>
+
+<!-- Modal 5: الملف الشخصي -->
+<div class="modal-overlay" id="profileModal">
+<div class="modal">
+    <div class="modal-header"><h2>الملف الشخصي</h2><button class="close-btn" onclick="closeModal('profileModal')">×</button></div>
+    <div class="profile-box">
+        <div class="big-profile" id="bigProfile">👤</div>
+        <h2 id="profileName" style="margin-bottom:15px;">-</h2>
+        <div class="profile-data">
+            <div><span>نوع الحساب:</span><strong id="profileType">-</strong></div>
+            <div><span>الهاتف:</span><strong id="profilePhone">-</strong></div>
+            <div><span>الموقع:</span><strong id="profileLocation">-</strong></div>
+        </div>
+        <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
+    </div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+<div class="footer-content">
+    <div class="logo"><div class="logo-icon" style="width:36px;height:36px;border-radius:12px;font-size:18px;">💎</div> إليت سيرفس</div>
+    <p>جميع الحقوق محفوظة © 2026</p>
+</div>
+</footer>
+
+<!-- Firebase & Paymob Integration Script -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getDatabase, ref, push, onValue, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD1JTHxl08QlNoa6TwpSnbyV7ZOlaKcsLU",
+  authDomain: "service-b3e88.firebaseapp.com",
+  projectId: "service-b3e88",
+  storageBucket: "service-b3e88.firebasestorage.app",
+  messagingSenderId: "518858788516",
+  appId: "1:518858788516:web:f6003b098b0cdf2c022031",
+  measurementId: "G-GHZVHZJF8Y"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const defaultServices = [
+{ id:1, name:"محمد للصيانة", type:"سباكة", icon:"🔧", rating:4.9, reviews:142, price:200, governorate:"الإسكندرية", area:"سموحة", verified:true, phone:"01000000001", isVip:true },
+{ id:2, name:"أحمد للكهرباء", type:"كهرباء", icon:"⚡", rating:4.8, reviews:98, price:150, governorate:"الإسكندرية", area:"سموحة", verified:true, phone:"01000000002", isVip:false }
+];
+
+let firebaseWorkers = [];
+let firebaseOrders = [];
+let selectedPlanData = { type: "monthly", price: 250, name: "شهري" };
+let tempWorkerData = null;
+
+function getUser(){
+    try{ return JSON.parse(localStorage.getItem("elite_service_user")); }catch{ return null; }
+}
+function saveUser(user){ localStorage.setItem("elite_service_user", JSON.stringify(user)); }
+
+onValue(ref(db, 'workers'), (snapshot) => {
+    const data = snapshot.val();
+    firebaseWorkers = [];
+    if(data){
+        Object.keys(data).forEach(key => {
+            let worker = { id: key, ...data[key] };
+            if(worker.isVip && worker.vipExpiresAt && Date.now() > worker.vipExpiresAt){
+                update(ref(db, `workers/${key}`), { isVip: false, vipExpiresAt: null });
+                worker.isVip = false;
+            }
+            firebaseWorkers.push(worker);
+        });
+    }
+    renderServices();
+});
+
+onValue(ref(db, 'orders'), (snapshot) => {
+    const data = snapshot.val();
+    firebaseOrders = [];
+    if(data){
+        Object.keys(data).forEach(key => {
+            firebaseOrders.push({ id: key, ...data[key] });
+        });
+    }
+    renderOrders();
+    renderWorkerDashboard();
+});
+
+window.openModal = function(id){ document.getElementById(id).classList.add("active"); }
+window.closeModal = function(id){ document.getElementById(id).classList.remove("active"); }
+window.closeAllModals = function(){ document.querySelectorAll(".modal-overlay").forEach(m => m.classList.remove("active")); }
+
+window.openLoginModal = function(){
+    const user = getUser();
+    if(user){
+        window.showProfile();
+    } else {
+        window.openModal("loginModal");
+    }
+}
+
+window.openPlansModal = function(){
+    window.openModal("plansModal");
+}
+
+window.selectPlan = function(type, price, name){
+    selectedPlanData = { type, price, name };
+    document.querySelectorAll(".plan-card").forEach(c => c.classList.remove("selected"));
+    event.currentTarget.classList.add("selected");
+}
+
+window.proceedToWorkerRegister = function(){
+    window.closeModal("plansModal");
+    window.openModal("workerSetupModal");
+}
+
+document.getElementById("workerSetupForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const name = document.getElementById("workerName").value.trim();
+    const phone = document.getElementById("workerPhone").value.trim();
+    const price = Number(document.getElementById("workerPrice").value);
+    const governorate = document.getElementById("workerGovernorate").value;
+    const area = document.getElementById("workerArea").value.trim();
+    const address = document.getElementById("workerAddress").value.trim();
+    
+    const services = [...document.querySelectorAll('input[name="workerService"]:checked')].map(i => i.value);
+    if(!services.length){ alert("اختر تخصصاً واحداً على الأقل"); return; }
+
+    tempWorkerData = { 
+        type: "worker", 
+        name, 
+        phone, 
+        price, 
+        services, 
+        governorate, 
+        area, 
+        address, 
+        rating: 5, 
+        reviews: 0, 
+        verified: true, 
+        isVip: true, 
+        subscriptionPlan: selectedPlanData.name,
+        subscriptionPrice: selectedPlanData.price,
+        vipExpiresAt: Date.now() + (selectedPlanData.type === 'weekly' ? 7 : selectedPlanData.type === 'monthly' ? 30 : 365) * 24 * 60 * 60 * 1000 
+    };
+
+    window.closeModal("workerSetupModal");
+    document.getElementById("paymentAmountText").textContent = `قيمة الاشتراك المطلوبة: ${selectedPlanData.price} ج.م`;
+    window.openModal("paymentModal");
+});
+
+// دوال الاتصال الحقيقي بـ Paymob وإتمام الدفع
+async function payWithPaymob(amountInEGP, workerData) {
+    const apiKey = "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRJeU5UVTRNaXdpYm1GdFpTSTZJbWx1YVhScFlXd2lmUS5mTkJyMGduczdvZll3czNhSjZEVE12TUpHS0pXLUhNWVZzaDVORGk2RnR2eXVLdmNyVlc3X3lYbFFuNjdYdEZkbTFaaENIYlIwaEpkdDZhdjNFblNGdw==";
+    const amountCents = amountInEGP * 100;
+
+    try {
+        // الخطوة 1: طلب Auth Token باستخدام مفتاح الـ API
+        const authRes = await fetch("https://accept.paymob.com/api/auth/tokens", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ api_key: apiKey })
+        });
+        const authData = await authRes.json();
+        const token = authData.token;
+
+        if (!token) throw new Error("فشل المصادقة مع بوابة الدفع");
+
+        // الخطوة 2: تسجيل طلب الدفع (Order Registration)
+        const orderRes = await fetch("https://accept.paymob.com/api/ecommerce/orders", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                auth_token: token,
+                delivery_needed: "false",
+                amount_cents: amountCents,
+                currency: "EGP",
+                items: []
+            })
+        });
+        const orderData = await orderRes.json();
+        const orderId = orderData.id;
+
+        // الخطوة 3: إنشاء Payment Key
+        const paymentKeyRes = await fetch("https://accept.paymob.com/api/acceptance/payment_keys", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                auth_token: token,
+                amount_cents: amountCents,
+                expiration: 3600,
+                order_id: orderId,
+                billing_data: {
+                    apartment: "NA",
+                    email: "fahd@store.com",
+                    floor: "NA",
+                    first_name: workerData.name.split(" ")[0] || "Fahd",
+                    last_name: "Abady",
+                    street: workerData.address || "Cairo",
+                    building: "NA",
+                    phone_number: workerData.phone,
+                    shipping_method: "NA",
+                    postal_code: "NA",
+                    city: workerData.governorate || "Cairo",
+                    country: "EG",
+                    state: workerData.governorate || "Cairo"
+                },
+                currency: "EGP",
+                integration_id: 4545236 // (استبدل هذا الرقم برقم الـ Integration ID الخاص ببطاقات البنك من لوحتك في Paymob عند الحاجة)
+            })
+        });
+        const paymentKeyData = await paymentKeyRes.json();
+        const paymentKey = paymentKeyData.token;
+
+        if (paymentKey) {
+            // الخطوة 4: التوجيه لصفحة دفع Paymob (Test Mode iframe)
+            const iframeId = "852364"; // (أو رابط إطار الدفع الخاص بحسابك)
+            window.location.href = `https://accept.paymob.com/api/acceptance/iframes/${iframeId}?payment_token=${paymentKey}`;
+        } else {
+            alert("حدث خطأ أثناء إنشاء مفتاح الدفع من Paymob.");
+        }
+
+    } catch (error) {
+        console.error("خطأ في ربط Paymob:", error);
+        alert("حدث خطأ تقني أثناء الاتصال ببوابة الدفع.");
+    }
+}
+
+document.getElementById("paymentForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const btn = document.getElementById("payConfirmBtn");
+    btn.textContent = "جاري الاتصال ببوابة Paymob... ⏳";
+    btn.disabled = true;
+
+    if(tempWorkerData){
+        // حفظ الحرفي في قاعدة البيانات ثم تحويله لبوابة Paymob الحقيقية
+        push(ref(db, 'workers'), tempWorkerData);
+        payWithPaymob(selectedPlanData.price, tempWorkerData);
+    }
+});
+
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const name = document.getElementById("userName").value.trim();
+    const phone = document.getElementById("loginPhone").value.trim();
+    const governorate = document.getElementById("userGovernorate").value;
+    const area = document.getElementById("userArea").value.trim();
+    const address = document.getElementById("userAddress").value.trim();
+
+    const foundWorker = firebaseWorkers.find(w => w.phone === phone);
+    if(foundWorker){
+        saveUser({ id: foundWorker.id, ...foundWorker });
+        window.closeAllModals();
+        updateUI();
+        showToast(`أهلاً بك يا فنان في لوحة التحكم 👋`);
+        return;
+    }
+
+    const user = { 
+        id: Date.now(), 
+        type: "user", 
+        name: name, 
+        phone: phone, 
+        governorate: governorate, 
+        area: area, 
+        address: address 
+    };
+    
+    saveUser(user);
+    window.closeAllModals();
+    updateUI();
+    showToast(`أهلاً بك كعميل في المنصة ✨`);
+    renderServices();
+});
+
+window.showProfile = function(){
+    const user = getUser();
+    if(!user){ window.openModal("loginModal"); return; }
+    document.getElementById("profileName").textContent = user.name;
+    document.getElementById("profilePhone").textContent = user.phone;
+    document.getElementById("profileType").textContent = user.type === "worker" ? `مزود خدمة (حرفي) - باقة ${user.subscriptionPlan || 'نشطة'}` : "مستفيد";
+    document.getElementById("profileLocation").textContent = `${user.governorate} - ${user.area}`;
+    document.getElementById("bigProfile").textContent = user.name.charAt(0);
+    window.openModal("profileModal");
+}
+
+window.logout = function(){
+    localStorage.removeItem("elite_service_user");
+    window.closeAllModals();
+    updateUI();
+    renderServices();
+    renderOrders();
+    renderWorkerDashboard();
+    showToast("تم تسجيل الخروج");
+}
+
+function updateUI(){
+    const user = getUser();
+    const loginBtn = document.getElementById("loginButton");
+    const profileBtn = document.getElementById("profileButton");
+    if(user){
+        loginBtn.textContent = user.type === "worker" ? "لوحة الحرفي" : "حسابي";
+        profileBtn.textContent = user.name.charAt(0);
+    } else {
+        loginBtn.textContent = "تسجيل الدخول (مستفيد)";
+        profileBtn.textContent = "👤";
+    }
+    updateHeroLocation();
+    showWorkerDashboardSection();
+}
+
+function updateHeroLocation(){
+    const user = getUser();
+    const el = document.getElementById("heroLocation");
+    if(!user){ el.textContent = "لم يتم تحديد الموقع"; return; }
+    el.textContent = `${user.governorate} - ${user.area}`;
+}
+
+function getServices(){
+    const list = [...defaultServices];
+    const icons = { "سباكة":"🔧", "كهرباء":"⚡", "تكييف":"❄️", "موبايلات":"📱", "تنظيف":"🧹", "سيارات":"🚗" };
+    
+    firebaseWorkers.forEach(worker => {
+        if(worker.services && Array.isArray(worker.services)){
+            worker.services.forEach(service => {
+                list.unshift({
+                    id: worker.id,
+                    name: worker.name,
+                    type: service,
+                    icon: icons[service] || "🔧",
+                    rating: worker.rating || 5,
+                    reviews: worker.reviews || 0,
+                    price: worker.price,
+                    governorate: worker.governorate,
+                    area: worker.area,
+                    phone: worker.phone,
+                    isVip: worker.isVip || false
+                });
+            });
+        }
+    });
+    return list.sort((a, b) => (b.isVip ? 1 : 0) - (a.isVip ? 1 : 0));
+}
+
+function renderServices(list = null){
+    if(!list) list = getServices();
+    const grid = document.getElementById("servicesGrid");
+    grid.innerHTML = "";
+    if(!list.length){
+        grid.innerHTML = `<div class="empty" style="grid-column:1/-1">عذراً، لا توجد خدمات متاحة حالياً.</div>`;
+        return;
+    }
+    list.forEach(service => {
+        const card = document.createElement("div");
+        card.className = `service-card ${service.isVip ? 'vip' : ''}`;
+        card.innerHTML = `
+            <div class="service-top">
+                <div class="service-avatar">${service.icon}</div>
+                <div class="verified">${service.isVip ? '⭐ إعلان مميز VIP' : '✓ متاح كاش'}</div>
+            </div>
+            <h3>${service.name}</h3>
+            <div class="service-type">${service.type}</div>
+            <div class="rating">⭐ ${service.rating} <span>(${service.reviews} تقييم)</span></div>
+            <div class="service-info">
+                <span>📍 ${service.governorate} - ${service.area}</span>
+                <span>💰 السعر: <strong>${service.price} جنيه</strong></span>
+            </div>
+            <div class="service-footer">
+                <div class="price">${service.price} ج.م</div>
+                <button class="request-btn" onclick='openRequest(${JSON.stringify(service)})'>اطلب الخدمة</button>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+window.searchServices = function(){
+    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+    if(!query){ renderServices(); return; }
+    const result = getServices().filter(s => 
+        s.name.toLowerCase().includes(query) ||
+        s.type.toLowerCase().includes(query) ||
+        s.area.toLowerCase().includes(query)
+    );
+    renderServices(result);
+}
+
+window.filterCategory = function(category){
+    let services = getServices().filter(s => s.type === category);
+    document.getElementById("servicesTitle").textContent = `خدمات تخصص ${category}`;
+    renderServices(services);
+    window.scrollToSection("services");
+}
+
+window.openRequest = function(service){
+    const user = getUser();
+    if(!user){ window.openModal("loginModal"); showToast("يرجى تسجيل الدخول كعميل أولاً"); return; }
+    if(user.type === "worker"){ showToast("حسابات الحرفيين مخصصة لتقديم الخدمات وكسب الأرباح"); return; }
+
+    document.getElementById("selectedProvider").value = service.name;
+    document.getElementById("selectedService").value = service.type;
+    document.getElementById("selectedWorkerPhone").value = service.phone;
+    document.getElementById("selectedWorkerBasePrice").value = service.price;
+    document.getElementById("customerName").value = user.name;
+    document.getElementById("customerPhone").value = user.phone;
+    document.getElementById("customerAddress").value = user.address;
+
+    window.openModal("requestModal");
+}
+
+document.getElementById("requestForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const user = getUser();
+    if(!user) return;
+
+    const basePrice = Number(document.getElementById("selectedWorkerBasePrice").value);
+
+    const order = {
+        customerName: document.getElementById("customerName").value.trim(),
+        customerPhone: document.getElementById("customerPhone").value.trim(),
+        provider: document.getElementById("selectedProvider").value,
+        workerPhone: document.getElementById("selectedWorkerPhone").value,
+        service: document.getElementById("selectedService").value,
+        address: document.getElementById("customerAddress").value.trim(),
+        date: document.getElementById("serviceDate").value,
+        description: document.getElementById("problemDescription").value.trim(),
+        basePrice: basePrice,
+        status: "pending",
+        createdAt: new Date().toISOString()
+    };
+
+    push(ref(db, 'orders'), order);
+    window.closeModal("requestModal");
+    this.reset();
+    showToast("تم إرسال الطلب للحرفي بنجاح 🚀");
+    window.scrollToSection("orders");
+});
+
+function renderOrders(){
+    const user = getUser();
+    const container = document.getElementById("ordersList");
+    if(!user || user.type === "worker"){
+        container.innerHTML = `<div class="empty">سجل دخولك كمستفيد لمتابعة طلباتك.</div>`;
+        return;
+    }
+    const orders = firebaseOrders.filter(o => o.customerPhone === user.phone);
+    if(!orders.length){
+        container.innerHTML = `<div class="empty">ليس لديك طلبات نشطة.</div>`;
+        return;
+    }
+    container.innerHTML = "";
+    orders.forEach(order => {
+        const textMap = { pending:"بانتظار موافقة الحرفي", accepted:"تم القبول وجاري التنفيذ 🛠️", completed:"تم إنجاز الخدمة ✅", rejected:"اعتذر الحرفي ❌" };
+        const div = document.createElement("div");
+        div.className = "order";
+        div.innerHTML = `
+            <div class="order-main">
+                <h3>${order.service} مع ${order.provider}</h3>
+                <div class="order-info">
+                    <span>📍 ${order.address}</span>
+                    <span>💰 الدفع كاش مباشر: ${order.basePrice} ج.م</span>
+                    <span>📅 ${formatDate(order.date)}</span>
+                    <span>📝 ${order.description}</span>
+                </div>
+            </div>
+            <div><span class="status ${order.status}">${textMap[order.status]}</span></div>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function showWorkerDashboardSection(){
+    const user = getUser();
+    const dash = document.getElementById("workerDashboard");
+    if(user && user.type === "worker"){
+        dash.classList.add("active");
+        renderWorkerDashboard();
+    } else {
+        dash.classList.remove("active");
+    }
+}
+
+function renderWorkerDashboard(){
+    const user = getUser();
+    const container = document.getElementById("workerOrdersList");
+    if(!user || user.type !== "worker") return;
+
+    const orders = firebaseOrders.filter(o => o.workerPhone === user.phone);
+    const pending = orders.filter(o => o.status === "pending").length;
+
+    document.getElementById("totalOrders").textContent = orders.length;
+    document.getElementById("pendingOrders").textContent = pending;
+
+    if(!orders.length){
+        container.innerHTML = `<div class="empty">لا توجد طلبات واردة حالياً. انتظر استقبال الطلبات وتحقيق الأرباح!</div>`;
+        return;
+    }
+
+    container.innerHTML = "";
+    orders.forEach(order => {
+        let actions = "";
+        if(order.status === "pending"){
+            actions = `
+                <div class="worker-actions">
+                    <button class="accept-btn" onclick="updateOrderStatus('${order.id}','accepted')">✅ قبول الطلب</button>
+                    <button class="reject-btn" onclick="updateOrderStatus('${order.id}','rejected')">❌ اعتذار</button>
+                </div>
+            `;
+        } else if(order.status === "accepted"){
+            actions = `
+                <div class="worker-actions">
+                    <button class="complete-btn" onclick="updateOrderStatus('${order.id}','completed')">✅ تأكيد إتمام العمل وقبض الكاش</button>
+                </div>
+            `;
+        }
+
+        const textMap = { pending:"طلب جديد بانتظار موافقتك", accepted:"جاري التنفيذ والتواصل مع العميل", completed:"مكتمل ✅", rejected:"مرفوض" };
+        const div = document.createElement("div");
+        div.className = "order";
+        div.innerHTML = `
+            <div class="order-main">
+                <h3>🔔 طلب من: ${order.customerName}</h3>
+                <div class="order-info">
+                    <span>🛠️ الخدمة: <strong>${order.service}</strong></span>
+                    <span>📱 هاتف العميل: ${order.customerPhone}</span>
+                    <span>📍 الموقع: ${order.address}</span>
+                    <span>💰 المبلغ المقبوض كاش: ${order.basePrice} ج.م (المال كله لك!)</span>
+                    <span>📅 الموعد: ${formatDate(order.date)}</span>
+                    <span>📝 التفاصيل: ${order.description}</span>
+                </div>
+                ${actions}
+            </div>
+            <div><span class="status ${order.status}">${textMap[order.status]}</span></div>
+        `;
+        container.appendChild(div);
+    });
+}
+
+window.updateOrderStatus = function(orderId, newStatus){
+    update(ref(db, `orders/${orderId}`), { status: newStatus, updatedAt: new Date().toISOString() });
+    showToast("تم تحديث حالة الطلب بنجاح");
+}
+
+function formatDate(val){
+    if(!val) return "غير محدد";
+    try{ return new Date(val).toLocaleString("ar-EG", { dateStyle: "full", timeStyle: "short" }); }catch{ return val; }
+}
+
+let toastTimer;
+function showToast(msg){
+    const toast = document.getElementById("toast");
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.classList.remove("show"); }, 3800);
+}
+
+window.scrollToSection = function(id){
+    const el = document.getElementById(id);
+    if(el) el.scrollIntoView({ behavior: "smooth" });
+}
+
+renderServices();
+updateUI();
+</script>
+
+</body>
+</html>

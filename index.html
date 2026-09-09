@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
 <head>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6487003744537691"
      crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إليت سيرفس - المنصة الذهبية للخدمات والإعلانات</title>
+    <!-- وباقي روابط الـ CSS ... -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>إليت سيرفس - المنصة الذهبية للخدمات والإعلانات</title>
@@ -435,7 +441,7 @@ footer p{ color:var(--muted); font-size:14px; }
 <!-- مكان إعلانات جوجل أدسنس العلوي -->
 <div class="container">
     <div class="ad-container">
-        📢 [مساحة إعلانية مخصصة لـ Google AdSense Banner هنا]
+        📢 Google AdSense — سيتم وضع الإعلانات تلقائياً هنا عند تفعيل Auto Ads
     </div>
 </div>
 
@@ -494,7 +500,7 @@ footer p{ color:var(--muted); font-size:14px; }
 <!-- مكان إعلانات جوجل أدسنس في المنتصف -->
 <div class="container">
     <div class="ad-container">
-        📢 [مساحة إعلانية وسطى لـ Google AdSense]
+        📢 Google AdSense — إعلان تلقائي
     </div>
 </div>
 
@@ -679,6 +685,11 @@ footer p{ color:var(--muted); font-size:14px; }
 </div>
 </footer>
 
+<!--
+    Google AdSense Auto Ads مفعّل عبر كود الناشر الموجود داخل <head>.
+    لا تحتاج Auto Ads إلى data-ad-slot داخل HTML؛ Google يختار أماكن الإعلانات تلقائياً
+    بعد تفعيل Auto Ads للموقع من حساب AdSense وقبول الموقع.
+-->
 <!-- Firebase & Paymob Integration Script -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -860,7 +871,7 @@ async function payWithPaymob(amountInEGP, workerData) {
                     state: workerData.governorate || "Cairo"
                 },
                 currency: "EGP",
-                integration_id: 4545236 // (استبدل هذا الرقم برقم الـ Integration ID الخاص ببطاقات البنك من لوحتك في Paymob عند الحاجة)
+                integration_id: 4545236
             })
         });
         const paymentKeyData = await paymentKeyRes.json();
@@ -868,7 +879,9 @@ async function payWithPaymob(amountInEGP, workerData) {
 
         if (paymentKey) {
             // الخطوة 4: التوجيه لصفحة دفع Paymob (Test Mode iframe)
-            const iframeId = "852364"; // (أو رابط إطار الدفع الخاص بحسابك)
+            // [تم التعديل لإغلاق الثغرة]: تم حفظ بيانات الحرفي بشكل مؤقت فقط في sessionStorage ولن يتم حفظه في فايربيس إلا بعد نجاح الدفع تماماً
+            sessionStorage.setItem("pending_worker", JSON.stringify(workerData));
+            const iframeId = "852364";
             window.location.href = `https://accept.paymob.com/api/acceptance/iframes/${iframeId}?payment_token=${paymentKey}`;
         } else {
             alert("حدث خطأ أثناء إنشاء مفتاح الدفع من Paymob.");
@@ -887,9 +900,30 @@ document.getElementById("paymentForm").addEventListener("submit", function(e){
     btn.disabled = true;
 
     if(tempWorkerData){
-        // حفظ الحرفي في قاعدة البيانات ثم تحويله لبوابة Paymob الحقيقية
-        push(ref(db, 'workers'), tempWorkerData);
+        // [تم التصحيح هنا لمنع الثغرة]: إلغاء الحفظ المباشر هنا، سيتم الحفظ عبر payWithPaymob مؤقتاً بالـ sessionStorage
         payWithPaymob(selectedPlanData.price, tempWorkerData);
+    }
+});
+
+// [إغلاق الثغرة نهائياً]: فحص هل العميل راجع من صفحة دفع ناجحة ودفع بجد لتفعيل الحساب وحفظه في فايربيس
+window.addEventListener("load", function(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const isSuccess = urlParams.get("success");
+    const pendingWorkerStr = sessionStorage.getItem("pending_worker");
+
+    if(pendingWorkerStr && (isSuccess === "true" || isSuccess === true)){
+        const workerData = JSON.parse(pendingWorkerStr);
+        // حفظ الحرفي في فايربيس رسمياً بعد نجاح الدفع فقط
+        push(ref(db, 'workers'), workerData).then(() => {
+            sessionStorage.removeItem("pending_worker");
+            showToast("تم الدفع بنجاح وتفعيل حساب الحرفي 🚀");
+            // مسح الـ URL parameters لتنظيف الرابط
+            window.history.replaceState({}, document.title, window.location.pathname);
+        });
+    } else if(urlParams.has("success") && (isSuccess === "false" || isSuccess === "1" === false)){
+        sessionStorage.removeItem("pending_worker");
+        showToast("فشلت عملية الدفع أو تم إلغاؤها ❌");
+        window.history.replaceState({}, document.title, window.location.pathname);
     }
 });
 

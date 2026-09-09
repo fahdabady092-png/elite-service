@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
 <head>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6487003744537691"
      crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إليت سيرفس - المنصة الذهبية للخدمات والإعلانات</title>
-    <!-- وباقي روابط الـ CSS ... -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>إليت سيرفس - المنصة الذهبية للخدمات والإعلانات</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 *{
     box-sizing:border-box;
@@ -438,7 +430,6 @@ footer p{ color:var(--muted); font-size:14px; }
 </header>
 
 <main>
-<!-- مكان إعلانات جوجل أدسنس العلوي -->
 <div class="container">
     <div class="ad-container">
         📢 Google AdSense — سيتم وضع الإعلانات تلقائياً هنا عند تفعيل Auto Ads
@@ -466,7 +457,6 @@ footer p{ color:var(--muted); font-size:14px; }
     </div>
 </section>
 
-<!-- قسم الانضمام كحرفي وتحقيق أرباح ضخمة -->
 <section style="padding:0 0 30px 0;">
 <div class="container">
     <div class="sponsored-banner">
@@ -497,7 +487,6 @@ footer p{ color:var(--muted); font-size:14px; }
 </div>
 </section>
 
-<!-- مكان إعلانات جوجل أدسنس في المنتصف -->
 <div class="container">
     <div class="ad-container">
         📢 Google AdSense — إعلان تلقائي
@@ -514,7 +503,6 @@ footer p{ color:var(--muted); font-size:14px; }
 </div>
 </section>
 
-<!-- WORKER DASHBOARD -->
 <section id="workerDashboard" class="worker-dashboard">
 <div class="container">
     <div class="section-title">
@@ -540,9 +528,6 @@ footer p{ color:var(--muted); font-size:14px; }
 </section>
 </main>
 
-<!-- Modals -->
-
-<!-- Modal 1: اشتراك باقات الحرفيين -->
 <div class="modal-overlay" id="plansModal">
 <div class="modal">
     <div class="modal-header"><h2>اختر باقة اشتراك الحرفي 💼</h2><button class="close-btn" onclick="closeAllModals()">×</button></div>
@@ -568,7 +553,6 @@ footer p{ color:var(--muted); font-size:14px; }
 </div>
 </div>
 
-<!-- Modal 2: تسجيل بيانات الحرفي -->
 <div class="modal-overlay" id="workerSetupModal">
 <div class="modal">
     <div class="modal-header"><h2>إتمام اشتراك وتسجيل الحرفي 🧰</h2><button class="close-btn" onclick="closeAllModals()">×</button></div>
@@ -595,7 +579,6 @@ footer p{ color:var(--muted); font-size:14px; }
 </div>
 </div>
 
-<!-- Modal دفع الاشتراك عبر Paymob الحقيقي -->
 <div class="modal-overlay" id="paymentModal">
 <div class="modal">
     <div class="modal-header"><h2>إتمام الدفع الإلكتروني للاشتراك 💳</h2><button class="close-btn" onclick="closeAllModals()">×</button></div>
@@ -620,7 +603,6 @@ footer p{ color:var(--muted); font-size:14px; }
 </div>
 </div>
 
-<!-- Modal 3: تسجيل بيانات المستفيد (العادي) -->
 <div class="modal-overlay" id="loginModal">
 <div class="modal">
     <div class="modal-header"><h2>تسجيل دخول / إنشاء حساب مستفيد 🛡️</h2><button class="close-btn" onclick="closeModal('loginModal')">×</button></div>
@@ -635,7 +617,6 @@ footer p{ color:var(--muted); font-size:14px; }
 </div>
 </div>
 
-<!-- Modal 4: طلب خدمة للعملاء -->
 <div class="modal-overlay" id="requestModal">
 <div class="modal">
     <div class="modal-header"><h2>طلب خدمة 🛡️</h2><button class="close-btn" onclick="closeModal('requestModal')">×</button></div>
@@ -659,7 +640,6 @@ footer p{ color:var(--muted); font-size:14px; }
 </div>
 </div>
 
-<!-- Modal 5: الملف الشخصي -->
 <div class="modal-overlay" id="profileModal">
 <div class="modal">
     <div class="modal-header"><h2>الملف الشخصي</h2><button class="close-btn" onclick="closeModal('profileModal')">×</button></div>
@@ -685,12 +665,6 @@ footer p{ color:var(--muted); font-size:14px; }
 </div>
 </footer>
 
-<!--
-    Google AdSense Auto Ads مفعّل عبر كود الناشر الموجود داخل <head>.
-    لا تحتاج Auto Ads إلى data-ad-slot داخل HTML؛ Google يختار أماكن الإعلانات تلقائياً
-    بعد تفعيل Auto Ads للموقع من حساب AdSense وقبول الموقع.
--->
-<!-- Firebase & Paymob Integration Script -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getDatabase, ref, push, onValue, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -814,13 +788,11 @@ document.getElementById("workerSetupForm").addEventListener("submit", function(e
     window.openModal("paymentModal");
 });
 
-// دوال الاتصال الحقيقي بـ Paymob وإتمام الدفع
 async function payWithPaymob(amountInEGP, workerData) {
     const apiKey = "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRJeU5UVTRNaXdpYm1GdFpTSTZJbWx1YVhScFlXd2lmUS5mTkJyMGduczdvZll3czNhSjZEVE12TUpHS0pXLUhNWVZzaDVORGk2RnR2eXVLdmNyVlc3X3lYbFFuNjdYdEZkbTFaaENIYlIwaEpkdDZhdjNFblNGdw==";
     const amountCents = amountInEGP * 100;
 
     try {
-        // الخطوة 1: طلب Auth Token باستخدام مفتاح الـ API
         const authRes = await fetch("https://accept.paymob.com/api/auth/tokens", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -831,7 +803,6 @@ async function payWithPaymob(amountInEGP, workerData) {
 
         if (!token) throw new Error("فشل المصادقة مع بوابة الدفع");
 
-        // الخطوة 2: تسجيل طلب الدفع (Order Registration)
         const orderRes = await fetch("https://accept.paymob.com/api/ecommerce/orders", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -846,7 +817,6 @@ async function payWithPaymob(amountInEGP, workerData) {
         const orderData = await orderRes.json();
         const orderId = orderData.id;
 
-        // الخطوة 3: إنشاء Payment Key
         const paymentKeyRes = await fetch("https://accept.paymob.com/api/acceptance/payment_keys", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -878,8 +848,6 @@ async function payWithPaymob(amountInEGP, workerData) {
         const paymentKey = paymentKeyData.token;
 
         if (paymentKey) {
-            // الخطوة 4: التوجيه لصفحة دفع Paymob (Test Mode iframe)
-            // [تم التعديل لإغلاق الثغرة]: تم حفظ بيانات الحرفي بشكل مؤقت فقط في sessionStorage ولن يتم حفظه في فايربيس إلا بعد نجاح الدفع تماماً
             sessionStorage.setItem("pending_worker", JSON.stringify(workerData));
             const iframeId = "852364";
             window.location.href = `https://accept.paymob.com/api/acceptance/iframes/${iframeId}?payment_token=${paymentKey}`;
@@ -900,12 +868,10 @@ document.getElementById("paymentForm").addEventListener("submit", function(e){
     btn.disabled = true;
 
     if(tempWorkerData){
-        // [تم التصحيح هنا لمنع الثغرة]: إلغاء الحفظ المباشر هنا، سيتم الحفظ عبر payWithPaymob مؤقتاً بالـ sessionStorage
         payWithPaymob(selectedPlanData.price, tempWorkerData);
     }
 });
 
-// [إغلاق الثغرة نهائياً]: فحص هل العميل راجع من صفحة دفع ناجحة ودفع بجد لتفعيل الحساب وحفظه في فايربيس
 window.addEventListener("load", function(){
     const urlParams = new URLSearchParams(window.location.search);
     const isSuccess = urlParams.get("success");
@@ -913,11 +879,9 @@ window.addEventListener("load", function(){
 
     if(pendingWorkerStr && (isSuccess === "true" || isSuccess === true)){
         const workerData = JSON.parse(pendingWorkerStr);
-        // حفظ الحرفي في فايربيس رسمياً بعد نجاح الدفع فقط
         push(ref(db, 'workers'), workerData).then(() => {
             sessionStorage.removeItem("pending_worker");
             showToast("تم الدفع بنجاح وتفعيل حساب الحرفي 🚀");
-            // مسح الـ URL parameters لتنظيف الرابط
             window.history.replaceState({}, document.title, window.location.pathname);
         });
     } else if(urlParams.has("success") && (isSuccess === "false" || isSuccess === "1" === false)){
